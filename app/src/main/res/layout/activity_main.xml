@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.localsyncsampleproject.presentation.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/transparent"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_media_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="15dp"
+            android:text="@{@string/media_count(viewModel.deviceMediaCounts)}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_completed_count"
+            tools:text="갤러리 동기화 개수: 5개" />
+
+        <TextView
+            android:id="@+id/tv_media_count_local"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{viewModel.localDBCounts != null ? @string/media_count_local_db(viewModel.localDBCounts) : @string/media_count_local_db(0)}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_media_count"
+            tools:text="로컬 동기화 개수: 5개" />
+
+        <TextView
+            android:id="@+id/recently_modify_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{viewModel.firstSyncTime != null ? @string/first_sync_date(viewModel.firstSyncTime) : @string/first_sync_date(0)}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_media_count_local"
+            tools:text="최초 동기화: 2022.04.11" />
+
+        <TextView
+            android:id="@+id/recently_sync_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{viewModel.lastSyncTime != null ? @string/recently_sync_date(viewModel.lastSyncTime) : @string/recently_sync_date(0)}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recently_modify_date"
+            tools:text="최근 동기화: 2022.04.11" />
+
+        <TextView
+            android:id="@+id/tv_exif_gps_counts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progress_bar"
+            tools:text="위치 정보가 있는 사진 개수: 0/0" />
+
+        <TextView
+            android:id="@+id/tv_person_counts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_exif_gps_counts"
+            tools:text="사람이 있는 사진 개수: 0" />
+
+        <TextView
+            android:id="@+id/tv_completed_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="10dp"
+            android:text="@{viewModel.unCheckedIsPersonCounts != null ? @string/remaining_number(viewModel.unCheckedIsPersonCounts) : @string/remaining_number(0)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_person_counts"
+            tools:text="사람 파악 남은 사진 수" />
+
+        <Button
+            android:id="@+id/btn_init"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:text="동기화 초기화"
+            app:layout_constraintEnd_toStartOf="@id/btn_all_delete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recently_sync_date" />
+
+        <Button
+            android:id="@+id/btn_all_delete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:text="로컬 DB 전부 지우기"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_init"
+            app:layout_constraintTop_toBottomOf="@id/recently_sync_date" />
+
+        <Button
+            android:id="@+id/btn_go_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:padding="10dp"
+            android:text="갤러리"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_init" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_go_gallery" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

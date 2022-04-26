@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">DBSyncTest</string>
+
+    <string name="media_count">갤러리 미디어 개수 : %d개</string>
+    <string name="media_count_local_db">Local DB 미디어 개수 : %s개</string>
+    <string name="recently_modify_date">최초 수정일: %s</string>
+    <string name="recently_sync_date">최근 동기화: %s</string>
+    <string name="first_sync_date">최초 동기화: %s</string>
+    <string name="exif_gps_info_counts">위치 정보가 있는 사진 개수: %s/%s</string>
+    <string name="person_counting">사람이 있는 사진 개수: %s</string>
+    <string name="remaining_number">남은 사진 개수: %s</string>
+    <string name="person_counting_completed">사람 파악 남은 사진 수: %s / %s</string>
+
+</resources>

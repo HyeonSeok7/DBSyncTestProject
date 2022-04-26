@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "592739197621",
+    "project_id": "daybabyday-labs",
+    "storage_bucket": "daybabyday-labs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592739197621:android:719eb58be39df16a53d4fc",
+        "android_client_info": {
+          "package_name": "com.example.localsyncsampleproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592739197621-k67gma1bcnv42o048rm2gtpl8o8c5gmk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7ZmjQEb-Mer4Kvov5S-2_yUg_Jgybe7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592739197621-k67gma1bcnv42o048rm2gtpl8o8c5gmk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
