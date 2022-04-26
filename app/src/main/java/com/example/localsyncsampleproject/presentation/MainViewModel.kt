@@ -81,25 +81,23 @@ class MainViewModel @Inject constructor(
         LocalDataBaseSyncWorker.cancel(workManager)
     }
 
+
+    // Room DB Counts
+    var localDBCounts = mediaRepository.localCounts().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
+
+    // isPerson == 0, 사람이 존재하는지 판단이 안된 사진들 카운트
+    var unCheckedIsPersonCounts = mediaRepository.unCheckedIsPersonCounts().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
+
     // MediaStore, Media Counts
     fun getDevicePhotos() { // 임시
         _deviceMediaCounts.value = mediaRepository.createMediaData()
     }
 
-    // isPerson == 0, 사람이 존재하는지 판단이 안된 사진들 카운트
-    var unCheckedIsPersonCounts = mediaRepository.unCheckedIsPersonCounts().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
+    // Room DB 전부 삭제
+    suspend fun deleteAll() = mediaRepository.deleteAllPhotos()
 
     // isPerson == 1, 전체 카운트
     suspend fun getIsPersonPhotosCounts() = mediaRepository.isPersonCounts()
-
-    // Room DB Counts
-    var localDBCounts = mediaRepository.localCounts().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
-
-//    // Exif 지역 정보 Counts
-//    var exifInfoCounts = mediaRepository.exifGPSInfoCounts().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
-
-    // Room DB 전부 삭제
-    suspend fun deleteAll() = mediaRepository.deleteAllPhotos()
 
     // isPerson == 1, 사진이 사람이 있는 사진들
     suspend fun getIsPersonPhotosData() = mediaRepository.isPersonData()

@@ -36,9 +36,6 @@ interface MediaRepository {
     // 사람이 체크가 안된 사진 데이터
     suspend fun unCheckedIsPersonData(): Flow<List<Media>>
 
-    // 갤러리에 있느 사진을 모두 가져와서 exif 지역 정보를 추출하고 카운팅한다.
-    fun exifGPSInfoCounts(): Flow<Int>
-
     // 지역 정보가 있는 사진들 카운트
     suspend fun exifGPSInfoCounting(): Flow<Int>
 
