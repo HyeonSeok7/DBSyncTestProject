@@ -89,8 +89,7 @@ class MediaRepositoryImpl @Inject constructor(
     }
 
     // 로컬 DB Sync
-    override suspend fun syncMediaData(): List<Media> {
-        val mediaList = arrayListOf<Media>()
+    override suspend fun syncMediaData() {
         val roomDB = database.mediaDao().getAll().first()
         val columns = arrayOf(
             MediaStore.Images.Media.DATA,           // Disk 미디어 절대 파일 시스템 경로
@@ -187,7 +186,6 @@ class MediaRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             Log.e("syncMediaData", "$e")
         }
-        return mediaList // 확인을 위해서 return 해줌, 삭제해도 된다.
     }
 
     // 위도 경도 반환

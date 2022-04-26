@@ -9,8 +9,8 @@ interface MediaRepository {
     // 디바이스의 사진을 전부 가져와서 RoomD DB에 InsertAll 해줌
     fun createMediaData(): Int
 
-    // 디바이스의 사진과 MediaStore의 사진을 비교해서 Id가 다른 media를 추가 -> 동작 안함
-    suspend fun syncMediaData() : List<Media>
+    // 디바이스의 사진과 MediaStore의 사진을 비교해서 Id가 다른 media를 추가
+    suspend fun syncMediaData()
 
     // RoomD DB의 모든 사진 가져오기
     suspend fun getAllPhoto(): Flow<List<Media>>

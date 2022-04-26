@@ -1,14 +1,12 @@
 package com.example.localsyncsampleproject.sevice
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.provider.MediaStore
 import android.util.Log
 import androidx.core.net.toUri
 import androidx.hilt.work.HiltWorker
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.work.*
 import com.example.localsyncsampleproject.Utils
 import com.example.localsyncsampleproject.data.room.entity.Media
@@ -19,7 +17,6 @@ import dagger.assisted.AssistedInject
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.first
 import org.tensorflow.lite.examples.imagesegmentation.tflite.ImageSegmentationModelExecutor
 import org.tensorflow.lite.examples.imagesegmentation.tflite.ModelExecutionResult
 import org.tensorflow.lite.examples.imagesegmentation.utils.ImageUtils
