@@ -182,6 +182,7 @@ class MediaRepositoryImpl @Inject constructor(
                         dataStorePreferenceManager.setLastSyncTime(getTime())
                     }
                 }
+                cursor.close()
             }
         } catch (e: Exception) {
             Log.e("syncMediaData", "$e")
