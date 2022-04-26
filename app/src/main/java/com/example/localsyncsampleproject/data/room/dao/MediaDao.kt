@@ -31,9 +31,6 @@ interface MediaDao {
     @Query("DELETE FROM media")
     suspend fun deleteAll()
 
-    @Query("SELECT COUNT(*) FROM media WHERE isPerson == 1")
-    fun getIsPersonPhotos(): Flow<Int>
-
     @Query("SELECT COUNT(*) FROM media WHERE lat IS NOT NULL AND lng IS NOT NULL")
     fun getExifGPSInfoCounts(): Flow<Int>
 

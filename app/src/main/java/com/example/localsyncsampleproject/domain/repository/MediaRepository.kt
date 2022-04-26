@@ -24,9 +24,6 @@ interface MediaRepository {
     // Room DB의 데이터 개수
     fun localCounts(): Flow<Int>
 
-    // 사람이 있는 사진 개수
-    suspend fun isPersonCounts(): Flow<Int>
-
     // 사람이 있는 사진 데이터
     suspend fun isPersonData(): Flow<List<Media>>
 

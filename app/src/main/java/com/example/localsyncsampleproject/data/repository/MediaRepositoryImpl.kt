@@ -33,9 +33,6 @@ class MediaRepositoryImpl @Inject constructor(
     override fun localCounts(): Flow<Int> =
         database.mediaDao().localAllCounts()
 
-    override suspend fun isPersonCounts(): Flow<Int> =
-        database.mediaDao().getIsPersonPhotos()
-
     // gps 정보를 가지고 있는 사진 카운팅
     override suspend fun exifGPSInfoCounting(): Flow<Int> =
         database.mediaDao().getExifGPSInfoCounts()

@@ -96,9 +96,6 @@ class MainViewModel @Inject constructor(
     // Room DB 전부 삭제
     suspend fun deleteAll() = mediaRepository.deleteAllPhotos()
 
-    // isPerson == 1, 전체 카운트
-    suspend fun getIsPersonPhotosCounts() = mediaRepository.isPersonCounts()
-
     // isPerson == 1, 사진이 사람이 있는 사진들
     suspend fun getIsPersonPhotosData() = mediaRepository.isPersonData()
 

@@ -64,15 +64,6 @@ class MainActivity : AppCompatActivity() {
     private fun initLifecycleCoroutineScope() {
 
         lifecycle.coroutineScope.launch {
-            mainViewModel.getIsPersonPhotosCounts().collectLatest { // 새로운 데이터가 들어오면 이전 데이터의 처리를 강제 종료 시키고 새로운 데이터를 처리한다.
-                binding.tvPersonCounts.text = String.format(
-                    getString(R.string.person_counting),
-                    it
-                )
-            }
-        }
-
-        lifecycle.coroutineScope.launch {
             mainViewModel.getIsPersonPhotosData().collectLatest {
                 // isPerson == 1 (사진속 사람 존재)
                 binding.tvPersonCounts.text = String.format(
